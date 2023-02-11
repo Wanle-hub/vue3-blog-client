@@ -1,30 +1,53 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <MyHeader />
+  <div class="content">
+    <div class="left">
+      <router-view />
+    </div>
+    <div class="right">
+      <HotAriticles />
+      <Category />
+    </div>
   </div>
-  <router-view/>
+  <MyFooter />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script setup lang="ts">
+import MyHeader from "./components/MyHeader.vue";
+import MyFooter from "./components/MyFooter.vue";
+import Category from "@/components/aside/Category.vue";
+import HotAriticles from "@/components/aside/HotAriticles.vue";
+
+</script>
+
+<style lang="scss" scoped>
+.content {
+  display: flex;
+  min-height: 815px;
+  padding: 30px 10vw;
+  background-color: whitesmoke;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.left {
+  width: calc(100% * 3/4);
+  padding-right: 15px;
+}
+.right {
+  width: calc(100% * 1/4);
+  padding-left: 15px;
+}
+@media screen and (max-width: 1200px) {
+  .content {
+    padding: 30px 5vw;
+    flex-direction: column;
+  }
+  .left {
+    width: 100%;
+    padding-right: 0;
+  }
+  .right {
+    width: 100%;
+    margin-top: 20px;
+    padding-left: 0;
   }
 }
 </style>

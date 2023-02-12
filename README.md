@@ -1,4 +1,4 @@
-# my-blog
+# my-blog（技术博客网站）
 
 ## Project setup
 ```
